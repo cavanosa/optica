@@ -1,0 +1,151 @@
+ <div class="min-h-screen py-8">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Header -->
+        <div class="text-center mb-12">
+          <div class="inline-flex items-center justify-center w-16 h-16 bg-orange-600 rounded-full mb-4">
+            <lucide-icon [img]="TagIcon" class="w-8 h-8 text-white"></lucide-icon>
+          </div>
+          <h1 class="text-4xl font-bold text-gray-800 mb-4">
+            Ofertas Especiales
+          </h1>
+          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+            Aprovecha nuestras promociones exclusivas y cuida tu salud visual 
+            con los mejores precios del mercado.
+          </p>
+        </div>
+
+        <!-- Featured Offers -->
+        <div class="mb-16">
+          <div class="flex items-center mb-8">
+            <lucide-icon [img]="StarIcon" class="w-6 h-6 text-orange-500 mr-2"></lucide-icon>
+            <h2 class="text-2xl font-bold text-gray-800">Ofertas Destacadas</h2>
+          </div>
+          
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div 
+              *ngFor="let offer of featuredOffers" 
+              class="bg-gradient-to-r from-orange-500 to-red-600 rounded-2xl shadow-xl overflow-hidden"
+            >
+              <div class="p-8 text-white">
+                <div class="flex items-center justify-between mb-4">
+                  <span class="bg-white bg-opacity-20 px-3 py-1 rounded-full text-sm font-semibold">
+                    {{ offer.category }}
+                  </span>
+                  <div class="text-right">
+                    <div class="text-3xl font-bold">{{ offer.discount }}</div>
+                    <div class="text-sm opacity-90">DESCUENTO</div>
+                  </div>
+                </div>
+                
+                <h3 class="text-2xl font-bold mb-3">{{ offer.title }}</h3>
+                <p class="text-orange-100 mb-6 leading-relaxed">
+                  {{ offer.description }}
+                </p>
+                
+                <div class="flex items-center justify-between mb-6">
+                  <div class="flex items-center">
+                    <lucide-icon [img]="ClockIcon" class="w-4 h-4 mr-2"></lucide-icon>
+                    <span class="text-sm">
+                      Válido hasta {{ formatDate(offer.validUntil) }}
+                    </span>
+                  </div>
+                  <div class="bg-white bg-opacity-20 px-3 py-1 rounded-full text-sm font-semibold">
+                    {{ getDaysRemaining(offer.validUntil) }} días restantes
+                  </div>
+                </div>
+                
+                <button class="w-full bg-white text-orange-600 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors duration-200">
+                  Aprovechar Oferta
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Regular Offers -->
+        <div class="mb-16">
+          <div class="flex items-center mb-8">
+            <lucide-icon [img]="PercentIcon" class="w-6 h-6 text-blue-600 mr-2"></lucide-icon>
+            <h2 class="text-2xl font-bold text-gray-800">Todas las Ofertas</h2>
+          </div>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div 
+              *ngFor="let offer of regularOffers" 
+              class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
+            >
+              <div class="relative">
+                <img
+                  [src]="offer.image"
+                  [alt]="offer.title"
+                  class="w-full h-40 object-cover"
+                />
+                <div class="absolute top-4 right-4 bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-bold">
+                  -{{ offer.discount }}
+                </div>
+              </div>
+              
+              <div class="p-6">
+                <div class="flex items-center justify-between mb-3">
+                  <span class="bg-blue-100 text-blue-700 px-2 py-1 rounded-full text-xs font-semibold">
+                    {{ offer.category }}
+                  </span>
+                  <div class="flex items-center text-sm text-gray-500">
+                    <lucide-icon [img]="CalendarIcon" class="w-4 h-4 mr-1"></lucide-icon>
+                    {{ getDaysRemaining(offer.validUntil) }}d
+                  </div>
+                </div>
+                
+                <h3 class="text-lg font-semibold text-gray-800 mb-2">
+                  {{ offer.title }}
+                </h3>
+                <p class="text-gray-600 mb-4 text-sm">
+                  {{ offer.description }}
+                </p>
+                
+                <div class="mb-4">
+                  <h4 class="text-sm font-semibold text-gray-800 mb-2">Términos y condiciones:</h4>
+                  <ul class="text-xs text-gray-600 space-y-1">
+                    <li *ngFor="let term of offer.terms" class="flex items-start">
+                      <span class="w-1 h-1 bg-gray-400 rounded-full mt-2 mr-2 flex-shrink-0"></span>
+                      {{ term }}
+                    </li>
+                  </ul>
+                </div>
+                
+                <button class="w-full bg-blue-600 text-white py-2 rounded-lg font-semibold hover:bg-blue-700 transition-colors duration-200 text-sm">
+                  Ver Detalles
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Newsletter Signup -->
+        <div class="bg-gradient-to-r from-blue-600 to-indigo-700 rounded-2xl p-8 text-center">
+          <div class="max-w-2xl mx-auto">
+            <lucide-icon [img]="GiftIcon" class="w-12 h-12 text-white mx-auto mb-4"></lucide-icon>
+            <h2 class="text-3xl font-bold text-white mb-4">
+              ¡No te Pierdas Nuestras Ofertas!
+            </h2>
+            <p class="text-blue-100 text-lg mb-6">
+              Suscríbete a nuestro boletín y sé el primero en conocer nuestras 
+              promociones exclusivas y descuentos especiales.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+              <input
+                type="email"
+                placeholder="Tu correo electrónico"
+                class="flex-1 px-4 py-3 rounded-lg border-0 focus:ring-2 focus:ring-white focus:outline-none"
+              />
+              <button class="px-6 py-3 bg-white text-blue-600 font-semibold rounded-lg hover:bg-gray-50 transition-colors duration-200">
+                Suscribirse
+              </button>
+            </div>
+            <p class="text-blue-200 text-sm mt-4">
+              * Prometemos no enviar spam. Puedes cancelar tu suscripción en cualquier momento.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>

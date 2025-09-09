@@ -1,0 +1,130 @@
+<div class="min-h-screen">
+  <!-- Hero Section -->
+  <div class="relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div class="text-center">
+        <div class="inline-flex items-center justify-center w-20 h-20 bg-blue-600 rounded-full mb-6">
+          <lucide-icon [img]="EyeIcon" class="w-10 h-10 text-white"></lucide-icon>
+        </div>
+        <h1 class="text-4xl md:text-6xl font-bold text-gray-800 mb-6 leading-tight">
+          Tu Visión es<br />
+          <span class="text-blue-600">Nuestra Prioridad</span>
+        </h1>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+          En Ojo x Ojo, Lente x Lente, ofrecemos servicios profesionales de optometría
+          con la más alta calidad y tecnología de vanguardia para cuidar tu salud visual.
+        </p>
+        <button (click)="startTest.emit()"
+          class="inline-flex items-center px-8 py-4 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+          Comenzar Test de Visión Gratuito
+          <lucide-icon [img]="ArrowRightIcon" class="ml-2 w-5 h-5"></lucide-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Features Section -->
+  <div class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-800 mb-4">
+          ¿Por Qué Elegirnos?
+        </h2>
+        <p class="text-gray-600 max-w-2xl mx-auto">
+          Más de 15 años de experiencia cuidando la salud visual de nuestros pacientes
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="text-center p-6">
+          <div class="inline-flex items-center justify-center w-16 h-16 bg-blue-100 rounded-full mb-4">
+            <lucide-icon [img]="ShieldIcon" class="w-8 h-8 text-blue-600"></lucide-icon>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-3">
+            Profesionales Certificados
+          </h3>
+          <p class="text-gray-600">
+            Nuestro equipo de optometristas cuenta con certificaciones internacionales
+            y experiencia comprobada en el cuidado de la salud visual.
+          </p>
+        </div>
+
+        <div class="text-center p-6">
+          <div class="inline-flex items-center justify-center w-16 h-16 bg-green-100 rounded-full mb-4">
+            <lucide-icon [img]="ClockIcon" class="w-8 h-8 text-green-600"></lucide-icon>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-3">
+            Atención Rápida
+          </h3>
+          <p class="text-gray-600">
+            Ofrecemos citas el mismo día y servicios express para que no tengas
+            que esperar para cuidar tu visión.
+          </p>
+        </div>
+
+        <div class="text-center p-6">
+          <div class="inline-flex items-center justify-center w-16 h-16 bg-purple-100 rounded-full mb-4">
+            <lucide-icon [img]="AwardIcon" class="w-8 h-8 text-purple-600"></lucide-icon>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-3">
+            Tecnología Avanzada
+          </h3>
+          <p class="text-gray-600">
+            Utilizamos equipos de última generación para diagnósticos precisos
+            y tratamientos efectivos.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Vision Test CTA Section -->
+  <div class="py-16 bg-gradient-to-r from-blue-600 to-indigo-700">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-bold text-white mb-4">
+        Test de Visión Preliminar Gratuito
+      </h2>
+      <p class="text-blue-100 text-lg mb-8 max-w-2xl mx-auto">
+        Realiza nuestro test de visión en línea de 6 pantallas. Solo toma unos minutos
+        y te ayudará a identificar si necesitas una consulta profesional.
+      </p>
+      <button (click)="startTest.emit()"
+        class="inline-flex items-center px-8 py-4 bg-white text-blue-600 font-semibold rounded-lg hover:bg-gray-50 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+        Comenzar Test Ahora
+        <lucide-icon [img]="ArrowRightIcon" class="ml-2 w-5 h-5"></lucide-icon>
+      </button>
+      <p class="text-blue-200 text-sm mt-4">
+        * Este test no reemplaza un examen profesional
+      </p>
+    </div>
+  </div>
+
+  <!-- Contact Section -->
+  <div class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-800 mb-4">
+          Visítanos Hoy
+        </h2>
+        <p class="text-gray-600">
+          Estamos aquí para cuidar tu salud visual
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+        <div>
+          <h3 class="font-semibold text-gray-800 mb-2">📍 Ubicación</h3>
+          <p class="text-gray-600">Alfredo Brañas 4<br />Santiago de Compostela</p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-800 mb-2">📞 Teléfono</h3>
+          <p class="text-gray-600">(981) 59876543<br />WhatsApp disponible</p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-800 mb-2">🕒 Horarios</h3>
+          <p class="text-gray-600">Lun-Vie: 9:00-20:30<br />Sáb: 9:00-14:00</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

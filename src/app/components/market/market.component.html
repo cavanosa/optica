@@ -1,0 +1,131 @@
+ <div class="min-h-screen py-8">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Header -->
+        <div class="text-center mb-12">
+          <div class="inline-flex items-center justify-center w-16 h-16 bg-blue-600 rounded-full mb-4">
+            <lucide-icon [img]="EyeIcon" class="w-8 h-8 text-white"></lucide-icon>
+          </div>
+          <h1 class="text-4xl font-bold text-gray-800 mb-4">
+            Nuestros Productos
+          </h1>
+          <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+            Descubre nuestra amplia selección de lentes, monturas y accesorios 
+            de las mejores marcas internacionales.
+          </p>
+        </div>
+
+        <!-- Category Filter -->
+        <div class="bg-white rounded-2xl shadow-lg p-6 mb-8">
+          <div class="flex items-center mb-4">
+            <lucide-icon [img]="Funnel" class="w-5 h-5 text-gray-600 mr-2"></lucide-icon>
+            <h3 class="text-lg font-semibold text-gray-800">Filtrar por Categoría</h3>
+          </div>
+          <div class="flex flex-wrap gap-3">
+            <button
+              *ngFor="let category of categories"
+              (click)="selectedCategory = category.id"
+              [class]="getCategoryButtonClass(category.id)"
+            >
+              {{ category.label }}
+            </button>
+          </div>
+        </div>
+
+        <!-- Products Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div 
+            *ngFor="let product of filteredProducts" 
+            class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
+          >
+            <div class="relative">
+              <img
+                [src]="product.image"
+                [alt]="product.name"
+                class="w-full h-48 object-cover"
+              />
+              <div 
+                *ngIf="product.originalPrice > product.price"
+                class="absolute top-4 left-4 bg-red-500 text-white px-2 py-1 rounded-lg text-sm font-semibold"
+              >
+                -{{ getDiscountPercentage(product) }}%
+              </div>
+            </div>
+            
+            <div class="p-6">
+              <h3 class="text-xl font-semibold text-gray-800 mb-2">
+                {{ product.name }}
+              </h3>
+              <p class="text-gray-600 mb-4">
+                {{ product.description }}
+              </p>
+              
+              <!-- Features -->
+              <div class="mb-4">
+                <div class="flex flex-wrap gap-2">
+                  <span
+                    *ngFor="let feature of product.features"
+                    class="px-2 py-1 bg-blue-100 text-blue-700 text-xs rounded-full"
+                  >
+                    {{ feature }}
+                  </span>
+                </div>
+              </div>
+              
+              <!-- Rating -->
+              <div class="flex items-center mb-4">
+                <div class="flex items-center">
+                  <lucide-icon 
+                    *ngFor="let star of getStarArray(product.rating)" 
+                    [img]="StarIcon" 
+                    [class]="getStarClass(star, product.rating)"
+                  ></lucide-icon>
+                </div>
+                <span class="ml-2 text-sm text-gray-600">
+                  {{ product.rating }} ({{ getRandomReviews() }} reseñas)
+                </span>
+              </div>
+              
+              <!-- Price -->
+              <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center">
+                  <span class="text-2xl font-bold text-blue-600">
+                    ${{ product.price }}
+                  </span>
+                  <span 
+                    *ngIf="product.originalPrice > product.price"
+                    class="ml-2 text-lg text-gray-500 line-through"
+                  >
+                    ${{ product.originalPrice }}
+                  </span>
+                </div>
+              </div>
+              
+              <!-- Action Button -->
+              <button class="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors duration-200 flex items-center justify-center">
+                <lucide-icon [img]="ShoppingCartIcon" class="w-4 h-4 mr-2"></lucide-icon>
+                Consultar Disponibilidad
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="mt-16 bg-gradient-to-r from-blue-600 to-indigo-700 rounded-2xl p-8 text-center">
+          <h2 class="text-3xl font-bold text-white mb-4">
+            ¿No Encuentras lo que Buscas?
+          </h2>
+          <p class="text-blue-100 text-lg mb-6 max-w-2xl mx-auto">
+            Contamos con un catálogo extenso de más de 500 modelos. 
+            Visítanos en tienda o contáctanos para encontrar el producto perfecto para ti.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <button class="px-6 py-3 bg-white text-blue-600 font-semibold rounded-lg hover:bg-gray-50 transition-colors duration-200">
+              Visitar Tienda
+            </button>
+            <button class="px-6 py-3 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-blue-600 transition-colors duration-200">
+              Contactar Asesor
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>

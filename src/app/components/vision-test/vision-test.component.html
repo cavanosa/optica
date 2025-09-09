@@ -1,0 +1,61 @@
+ <div class="min-h-screen flex flex-col items-center justify-center px-4 py-8">
+      <div class="max-w-3xl mx-auto w-full">
+        <!-- Progress Bar -->
+        <div class="mb-8">
+          <div class="flex justify-between items-center mb-2">
+            <span class="text-sm text-gray-600">
+              Pregunta {{ currentQuestion + 1 }} de {{ questions.length }}
+            </span>
+            <span class="text-sm text-blue-600 font-semibold">
+              {{ Math.round(progress) }}% Completado
+            </span>
+          </div>
+          <div class="w-full bg-gray-200 rounded-full h-2">
+            <div 
+              class="bg-blue-600 h-2 rounded-full transition-all duration-300"
+              [style.width.%]="progress"
+            ></div>
+          </div>
+        </div>
+
+        <!-- Test Question -->
+        <div class="bg-white rounded-2xl shadow-lg p-8">
+          <h2 class="text-2xl font-semibold text-gray-800 mb-4">
+            {{ question.title }}
+          </h2>
+          <p class="text-gray-600 mb-8">
+            {{ question.description }}
+          </p>
+
+          <!-- Visual Test -->
+          <div class="mb-8 flex justify-center" [innerHTML]="question.image">
+          </div>
+
+          <!-- Answer Options -->
+          <div class="space-y-3">
+            <button
+              *ngFor="let option of question.options; let i = index"
+              (click)="handleAnswer(option.text, option.score)"
+              class="w-full text-left p-4 bg-gray-50 hover:bg-blue-50 rounded-lg border border-gray-200 hover:border-blue-300 transition-all duration-200 hover:shadow-md"
+            >
+              <span class="text-gray-800 font-medium">{{ option.text }}</span>
+            </button>
+          </div>
+
+          <!-- Navigation -->
+          <div class="flex justify-between items-center mt-8">
+            <button
+              (click)="goToPrevious()"
+              [disabled]="currentQuestion === 0"
+              class="inline-flex items-center px-4 py-2 text-gray-600 disabled:text-gray-400 disabled:cursor-not-allowed"
+            >
+              <lucide-icon [img]="ChevronLeftIcon" class="w-4 h-4 mr-1"></lucide-icon>
+              Anterior
+            </button>
+            <div class="text-sm text-gray-500">
+              Selecciona tu respuesta para continuar
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>

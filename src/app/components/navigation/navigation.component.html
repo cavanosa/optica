@@ -1,0 +1,49 @@
+<nav class="bg-white shadow-lg sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16">
+      <!-- Logo -->
+      <div class="flex items-center">
+        <div class="flex-shrink-0 flex items-center">
+          <div class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center mr-3">
+            <lucide-icon [img]="EyeIcon" class="w-6 h-6 text-white"></lucide-icon>
+          </div>
+          <div class="hidden md:block">
+            <h1 class="text-xl font-bold text-gray-800">
+              Ojo x Ojo, <span class="text-blue-600">Lente x Lente</span>
+            </h1>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation Links -->
+      <div class="hidden md:block">
+        <div class="ml-10 flex items-baseline space-x-4">
+          <button *ngFor="let item of navItems" (click)="navigate.emit(item.id)" [class]="getNavItemClass(item.id)">
+            <lucide-icon [img]="item.icon" class="w-4 h-4 mr-2"></lucide-icon>
+            {{ item.label }}
+          </button>
+        </div>
+      </div>
+
+      <!-- Vision Test CTA -->
+      <div class="flex items-center">
+        <button (click)="startTest.emit()"
+          class="bg-blue-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors duration-200 flex items-center">
+          <lucide-icon [img]="StethoscopeIcon" class="w-4 h-4 mr-2"></lucide-icon>
+          <span class="hidden sm:inline">Test de Visión</span>
+          <span class="sm:hidden">Test</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation -->
+    <div class="md:hidden">
+      <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+        <button *ngFor="let item of navItems" (click)="navigate.emit(item.id)" [class]="getMobileNavItemClass(item.id)">
+          <lucide-icon [img]="item.icon" class="w-4 h-4 mr-2"></lucide-icon>
+          {{ item.label }}
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>

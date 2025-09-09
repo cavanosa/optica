@@ -1,0 +1,120 @@
+<div class="min-h-screen flex flex-col items-center justify-center px-4 py-8">
+      <div class="max-w-3xl mx-auto w-full">
+        <!-- Header -->
+        <div class="text-center mb-8">
+          <div class="inline-flex items-center justify-center w-16 h-16 bg-blue-600 rounded-full mb-4">
+            <lucide-icon [img]="EyeIcon" class="w-8 h-8 text-white"></lucide-icon>
+          </div>
+          <h1 class="text-3xl font-bold text-gray-800 mb-2">
+            Resultados de tu Test de Visión
+          </h1>
+          <p class="text-gray-600">
+            Basado en tus respuestas, aquí está tu evaluación preliminar
+          </p>
+        </div>
+
+        <!-- Results Card -->
+        <div [class]="getResultCardClass()">
+          <div class="flex items-center justify-center mb-6">
+            <lucide-icon [img]="result.icon" class="w-8 h-8" [ngClass]="result.color"></lucide-icon>
+          </div>
+          
+          <div class="text-center mb-6">
+            <h2 [class]="'text-2xl font-bold mb-2 ' + result.color">
+              {{ result.level }}
+            </h2>
+            <p class="text-gray-700 text-lg leading-relaxed">
+              {{ result.message }}
+            </p>
+          </div>
+
+          <div class="bg-white rounded-lg p-6 mb-6">
+            <h3 class="font-semibold text-gray-800 mb-3 flex items-center">
+              <lucide-icon [img]="CalendarIcon" class="w-5 h-5 mr-2 text-blue-600"></lucide-icon>
+              Recomendación Profesional
+            </h3>
+            <p class="text-gray-700 leading-relaxed">
+              {{ result.recommendation }}
+            </p>
+          </div>
+
+          <!-- Score Breakdown -->
+          <div class="bg-white rounded-lg p-6">
+            <h3 class="font-semibold text-gray-800 mb-4">Detalles del Test</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
+              <div>
+                <div class="text-2xl font-bold text-blue-600">{{ answers.length }}</div>
+                <div class="text-sm text-gray-600">Preguntas Respondidas</div>
+              </div>
+              <div>
+                <div class="text-2xl font-bold text-blue-600">
+                  {{ Math.round((1 - scorePercentage/100) * 100) }}%
+                </div>
+                <div class="text-sm text-gray-600">Precisión Visual</div>
+              </div>
+              <div>
+                <div class="text-2xl font-bold text-blue-600">{{ result.level }}</div>
+                <div class="text-sm text-gray-600">Clasificación</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Information -->
+        <div class="bg-white rounded-2xl shadow-lg p-8 mb-6">
+          <h3 class="text-xl font-semibold text-gray-800 mb-4 text-center">
+            ¿Listo para una Consulta Profesional?
+          </h3>
+          <div class="text-center mb-6">
+            <h4 class="text-2xl font-bold text-blue-600 mb-2">
+              Ojo por Ojo, Lente por Lente
+            </h4>
+            <p class="text-gray-600">
+              Nuestros optometristas certificados están listos para cuidar tu salud visual
+            </p>
+          </div>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="text-center">
+              <h5 class="font-semibold text-gray-800 mb-2">Información de Contacto</h5>
+              <p class="text-gray-600">📞 (555) 123-4567</p>
+              <p class="text-gray-600">📧 citas ojoporojooptica.com</p>
+              <p class="text-gray-600">📍 Calle Principal 123, Ciudad</p>
+            </div>
+            <div class="text-center">
+              <h5 class="font-semibold text-gray-800 mb-2">Horarios de Atención</h5>
+              <p class="text-gray-600">Lun - Vie: 9:00 AM - 7:00 PM</p>
+              <p class="text-gray-600">Sáb: 9:00 AM - 5:00 PM</p>
+              <p class="text-gray-600">Dom: Cerrado</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="text-center space-y-4">
+          <button
+            [class]="getActionButtonClass()"
+            (click)="restart.emit()"
+          >
+            Agendar Cita Ahora
+          </button>
+          <div>
+            <button
+              (click)="restart.emit()"
+              class="px-6 py-2 text-gray-600 hover:text-gray-800 transition-colors duration-200"
+            >
+              Realizar Test Nuevamente
+            </button>
+          </div>
+        </div>
+
+        <!-- Disclaimer -->
+        <div class="mt-8 p-4 bg-gray-50 rounded-lg">
+          <p class="text-xs text-gray-500 text-center">
+            <strong>Importante:</strong> Este test es solo una evaluación preliminar y no reemplaza 
+            un examen profesional completo. Para un diagnóstico preciso y tratamiento adecuado, 
+            consulta con un optometrista calificado.
+          </p>
+        </div>
+      </div>
+    </div>
