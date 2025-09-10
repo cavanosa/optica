@@ -15,39 +15,11 @@ import { OffersComponent } from './components/offers/offers.component';
   imports: [
     RouterOutlet,
     CommonModule,
-    NavigationComponent,
-    HomeComponent,
-    VisionTestComponent,
-    ResultsComponent,
-    AboutUsComponent,
-    MarketComponent,
-    OffersComponent
+    NavigationComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'optica';
-  currentView: 'home' | 'about' | 'market' | 'offers' | 'test' | 'results' = 'home';
-  answers: TestAnswer[] = [];
-
-  startTest() {
-    this.answers = [];
-    this.currentView = 'test';
-  }
-
-  completeTest(testAnswers: TestAnswer[]) {
-    this.answers = testAnswers;
-    this.currentView = 'results';
-  }
-
-  resetToHome() {
-    this.currentView = 'home';
-    this.answers = [];
-  }
-
-  navigateTo(view: 'home' | 'about' | 'market' | 'offers') {
-    this.currentView = view;
-    this.answers = [];
-  }
+  title = 'Ojo x Ojo';
 }

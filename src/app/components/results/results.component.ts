@@ -3,6 +3,8 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Calendar, CircleCheck, Eye, LucideAngularModule, TriangleAlert } from 'lucide-angular';
 import { TestAnswer } from '../../model/test-answer';
 import { ResultAnalysis } from '../../model/result-analysis';
+import { TestService } from '../../services/test.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -12,8 +14,18 @@ import { ResultAnalysis } from '../../model/result-analysis';
   styleUrl: './results.component.css'
 })
 export class ResultsComponent {
-  @Input() answers: TestAnswer[] = [];
-  @Output() restart = new EventEmitter<void>();
+  answers: TestAnswer[] = [];
+  
+  constructor(private testService: TestService, private router: Router) {}
+
+  ngOnInit() {
+    this.answers = this.testService.getAnswers();
+  }
+
+  restart() {
+    this.testService.clear();
+    this.router.navigate(['/']); // vuelve al home
+  }
 
 
   Math = Math;
@@ -83,5 +95,9 @@ export class ResultsComponent {
       : `${baseClass} bg-blue-600 hover:bg-blue-700`;
   }
 
+   restartTest() {
+    this.testService.clear();
+    this.router.navigate(['/']); // vuelve al home
+  }
 
 }

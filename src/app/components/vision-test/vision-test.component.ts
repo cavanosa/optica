@@ -3,6 +3,8 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { LucideAngularModule, ChevronLeft, ChevronRight } from 'lucide-angular';
 import { TestAnswer } from '../../model/test-answer';
 import { TestQuestion } from '../../model/test-question';
+import { TestService } from '../../services/test.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-vision-test',
@@ -11,7 +13,6 @@ import { TestQuestion } from '../../model/test-question';
   styleUrl: './vision-test.component.css'
 })
 export class VisionTestComponent {
-  @Output() complete = new EventEmitter<TestAnswer[]>();
 
   Math = Math;
 
@@ -163,6 +164,12 @@ export class VisionTestComponent {
     return this.questions[this.currentQuestion];
   }
 
+
+
+
+
+  constructor(private testService: TestService, private router: Router) {}
+
   handleAnswer(answer: string, score: number): void {
     const newAnswer: TestAnswer = {
       question: this.currentQuestion + 1,
@@ -176,13 +183,15 @@ export class VisionTestComponent {
     if (this.currentQuestion < this.questions.length - 1) {
       this.currentQuestion++;
     } else {
-      this.complete.emit(updatedAnswers);
+      // Guardamos las respuestas en el servicio
+      this.testService.setAnswers(updatedAnswers);
+
+      // Navegamos a results
+      this.router.navigate(['/results']);
     }
   }
 
   goToPrevious(): void {
-    if (this.currentQuestion > 0) {
-      this.currentQuestion--;
-    }
+    if (this.currentQuestion > 0) this.currentQuestion--;
   }
 }

@@ -14,7 +14,7 @@
           En Ojo x Ojo, Lente x Lente, ofrecemos servicios profesionales de optometría
           con la más alta calidad y tecnología de vanguardia para cuidar tu salud visual.
         </p>
-        <button (click)="startTest.emit()"
+        <button (click)="startTest()" 
           class="inline-flex items-center px-8 py-4 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
           Comenzar Test de Visión Gratuito
           <lucide-icon [img]="ArrowRightIcon" class="ml-2 w-5 h-5"></lucide-icon>
@@ -88,7 +88,7 @@
         Realiza nuestro test de visión en línea de 6 pantallas. Solo toma unos minutos
         y te ayudará a identificar si necesitas una consulta profesional.
       </p>
-      <button (click)="startTest.emit()"
+      <button (click)="startTest()" 
         class="inline-flex items-center px-8 py-4 bg-white text-blue-600 font-semibold rounded-lg hover:bg-gray-50 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
         Comenzar Test Ahora
         <lucide-icon [img]="ArrowRightIcon" class="ml-2 w-5 h-5"></lucide-icon>

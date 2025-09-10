@@ -1,15 +1,4 @@
 <div class="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
-  <app-navigation
-    *ngIf="currentView === 'home' || currentView === 'about' || currentView === 'market' || currentView === 'offers'"
-    [currentView]="currentView" (navigate)="navigateTo($event)" (startTest)="startTest()">
-  </app-navigation>
-
-  <app-home *ngIf="currentView === 'home'" (startTest)="startTest()"></app-home>
-  <app-about-us *ngIf="currentView === 'about'"></app-about-us>
-  <app-market *ngIf="currentView === 'market'"></app-market>
-  <app-offers *ngIf="currentView === 'offers'"></app-offers>
-  <app-vision-test *ngIf="currentView === 'test'" (complete)="completeTest($event)"></app-vision-test>
-  <app-results *ngIf="currentView === 'results'" [answers]="answers" (restart)="resetToHome()"></app-results>
+  <app-navigation></app-navigation>
+  <router-outlet></router-outlet>
 </div>
-
-<router-outlet></router-outlet>
