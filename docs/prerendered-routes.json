@@ -1,0 +1,10 @@
+{
+  "routes": {
+    "/optica": {},
+    "/optica/about": {},
+    "/optica/market": {},
+    "/optica/offers": {},
+    "/optica/results": {},
+    "/optica/test": {}
+  }
+}
